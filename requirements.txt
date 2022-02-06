@@ -1,0 +1,9 @@
+Django==4.0.2
+djangorestframework==3.13.1
+djangorestframework_gis==0.18
+python_decouple==3.6
+psycopg2==2.9.3
+PyJWT==2.3.0
+django_filter==21.1
+django_extensions==3.1.5
+django_environ==0.7.0
