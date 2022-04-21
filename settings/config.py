@@ -45,7 +45,10 @@ THIRD_PARTY_APPS = [
     'django_extensions'
 ]
 
-LOCAL_APPS = []
+LOCAL_APPS = [
+    'geogaman.events',
+    'geogaman.zones'
+]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS
 
