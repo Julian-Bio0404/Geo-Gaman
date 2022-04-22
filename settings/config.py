@@ -42,7 +42,8 @@ THIRD_PARTY_APPS = [
     'rest_framework.authtoken',
     'rest_framework_gis',
     'django_filters',
-    'django_extensions'
+    'django_extensions',
+    'mptt'
 ]
 
 LOCAL_APPS = [

@@ -1,6 +1,7 @@
 Django==4.0.2
 djangorestframework==3.13.1
 djangorestframework_gis==0.18
+django-mptt==0.13.4
 python_decouple==3.6
 psycopg2==2.9.3
 PyJWT==2.3.0
