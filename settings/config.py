@@ -1,8 +1,9 @@
 """GeoGaman Settings."""
 
 from pathlib import Path
-from decouple import config
+
 import environ
+from decouple import config
 
 # Enviroments
 env = environ.Env()
@@ -144,4 +145,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-

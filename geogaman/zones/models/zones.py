@@ -20,6 +20,8 @@ class Zone(MPTTModel):
     name = models.CharField(max_length=100)
     codename = models.SlugField(unique=True)
     order = models.IntegerField(choices=ORDERS)
+
+    poly = models.PolygonField(null=True, blank=True, srid=4326)
     mpoly = models.MultiPolygonField(null=True, blank=True)
 
     parent = TreeForeignKey(
