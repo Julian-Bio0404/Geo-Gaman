@@ -23,6 +23,9 @@ class SportEvent(GeoGamanModel):
         help_text='sport event finish date', auto_now=False, auto_now_add=False)
 
     # ubication
+    zone = models.ForeignKey(
+        'zones.Zone', null=True, blank=True, on_delete=models.SET_NULL)
+
     geolocation = models.CharField(max_length=33)
     country = models.CharField(max_length=70)
     state = models.CharField(max_length=90)

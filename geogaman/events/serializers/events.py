@@ -9,6 +9,9 @@ from rest_framework import serializers
 # Models
 from geogaman.events.models import SportEvent
 
+# Utils
+from geogaman.utils.zones import get_zones
+
 
 class SportEventModelSerializer(serializers.ModelSerializer):
     """SportEvent model serializer."""
@@ -63,3 +66,10 @@ class SportEventModelSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 'The start date be must before that finish date.')
         return super().update(instance, data)
+    
+    def create(self, data):
+        """Create a event and get zone from lat, lng provide."""
+        geolocation = str(data['geolocation']).split()
+        zone = get_zones(geolocation[0], geolocation[1])
+        data['zone'] = zone[0]
+        return super().create(data)
