@@ -37,7 +37,7 @@ class Zone(MPTTModel):
 
     def get_order(self) -> str:
         """Return order name."""
-        return self.ORDERS[self.order][1]
+        return self.ORDERS[self.order - 1][1]
 
     def __str__(self) -> str:
         """Return order and name in str."""

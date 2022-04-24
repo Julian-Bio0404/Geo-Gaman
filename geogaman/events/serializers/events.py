@@ -9,6 +9,9 @@ from rest_framework import serializers
 # Models
 from geogaman.events.models import SportEvent
 
+# Serializers
+from geogaman.zones.serializers import ZoneModelSerializer
+
 # Utils
 from geogaman.utils.zones import get_zones
 
@@ -18,6 +21,7 @@ class SportEventModelSerializer(serializers.ModelSerializer):
 
     start = serializers.DateField()
     finish = serializers.DateField()
+    zone = ZoneModelSerializer(read_only=True)
 
     class Meta:
         """Meta options."""
@@ -26,27 +30,24 @@ class SportEventModelSerializer(serializers.ModelSerializer):
             'pk', 'title',
             'description',
             'start', 'finish',
-            'geolocation', 'country',
-            'state', 'city', 'place',
-            'created', 'updated'
-        ]
-
-        read_only_fields = [
-            'geolocation', 'country',
-            'state', 'city',
+            'zone', 'geolocation',
+            'country', 'state',
+            'city', 'place',
             'created', 'updated'
         ]
 
     def validate(self, data):
         """Check that the start date is before the end date"""
+        start = data.get('start', None)
+        finish = data.get('finish', None)
         today = date.today()
-        if data['start'] < today or data['finish'] < today:
-            raise serializers.ValidationError(
-                'The dates be must after that current date.')
 
-        if data['start'] > data['finish']:
-            raise serializers.ValidationError(
-                'The start date be must before that finish date.')
+        if start and (start < today) or (finish < today):
+                raise serializers.ValidationError(
+                    'The dates be must after that current date.')
+        if finish and (start > finish):
+                raise serializers.ValidationError(
+                    'The start date be must before that finish date.')
         return data
 
     def update(self, instance, data):
@@ -68,7 +69,7 @@ class SportEventModelSerializer(serializers.ModelSerializer):
         return super().update(instance, data)
     
     def create(self, data):
-        """Create a event and get zone from lat, lng provide."""
+        """Create an event and get zone from provided lat, lng."""
         geolocation = str(data['geolocation']).split()
         zone = get_zones(geolocation[0], geolocation[1])
         data['zone'] = zone[0]

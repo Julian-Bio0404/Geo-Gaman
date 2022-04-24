@@ -8,7 +8,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
 
 # Permissions
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny
 
 # Models
 from geogaman.events.models import SportEvent
@@ -26,7 +26,7 @@ class SportEventViewSet(viewsets.ModelViewSet):
 
     queryset = SportEvent.objects.all()
     serializer_class = SportEventModelSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
     filter_backends = (SearchFilter, OrderingFilter, DjangoFilterBackend)
     search_fields = ('country', 'state', 'city')
     ordering_fields = ('start',)

@@ -16,13 +16,6 @@ class ZoneModelSerializer(serializers.ModelSerializer):
         """Meta options."""
         model = Zone
         fields = [
-            'pk', 'name',
-            'codename',
-            'lng', 'lat'
-        ]
-
-        read_only_fields = [
-            'pk', 'name',
-            'codename',
-            'lng', 'lat'
+            'pk', 'name', 'codename',
+            'type', 'lat','lng'
         ]

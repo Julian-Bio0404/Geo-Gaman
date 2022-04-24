@@ -8,7 +8,7 @@ from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
 
 # Permissions
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny
 
 # Models
 from geogaman.zones.models import Zone
@@ -27,7 +27,7 @@ class ZoneViewSet(mixins.ListModelMixin,
 
     queryset = Zone.objects.all()
     serializer_class = ZoneModelSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
     filter_backends = (SearchFilter, DjangoFilterBackend)
     search_fields = ('order', 'lng', 'lat')
     filter_fields = ('order',)
