@@ -26,7 +26,7 @@ class Command(BaseCommand):
         for zone in data.itertuples():
             # mpoly = 146, poly = 100
             try:
-                zone, _ = Zone.objects.get_or_create(
+                Zone.objects.create(
                     name=zone.NAME,
                     codename=zone.ISO3,
                     order=1,
@@ -35,7 +35,7 @@ class Command(BaseCommand):
                     lat=zone.LAT
                 )
             except TypeError:
-                zone, _ = Zone.objects.get_or_create(
+                Zone.objects.create(
                     name=zone.NAME,
                     codename=zone.ISO3,
                     order=1,

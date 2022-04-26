@@ -48,10 +48,7 @@ THIRD_PARTY_APPS = [
     'mptt'
 ]
 
-LOCAL_APPS = [
-    'geogaman.events',
-    'geogaman.zones'
-]
+LOCAL_APPS = ['geogaman.zones']
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
