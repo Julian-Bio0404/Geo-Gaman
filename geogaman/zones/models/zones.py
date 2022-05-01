@@ -23,7 +23,7 @@ class Zone(MPTTModel):
     order = models.IntegerField(choices=ORDERS)
 
     poly = models.PolygonField(null=True, blank=True, srid=4326)
-    mpoly = models.MultiPolygonField(null=True, blank=True)
+    mpoly = models.MultiPolygonField(null=True, blank=True, srid=4326)
 
     parent = TreeForeignKey(
         'self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')

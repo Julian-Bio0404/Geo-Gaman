@@ -42,4 +42,4 @@ class SearchZoneEventsSerializer(serializers.Serializer):
         zones = get_zones(data['lat'], data['lng'])
         if not zones:
             raise serializers.ValidationError('No zones found.')
-        return zones
+        return zones[0]
