@@ -1,4 +1,4 @@
-Django==4.0.2
+Django==4.0.4
 djangorestframework==3.13.1
 djangorestframework_gis==0.18
 django-mptt==0.13.4
